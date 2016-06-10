@@ -48,25 +48,19 @@ tabMap = newMap();
 
 // Images from spritesXX.png: [x, y, w, h]
 spriteBig = {
-  "4": {16: [1, 1, 9, 14]},
-  "6": {16: [11, 1, 9, 14]},
-  "?": {16: [21, 1, 9, 14]},
+  "4": [1, 1, 12, 14],
+  "6": [14, 1, 12, 14],
+  "?": [27, 1, 12, 14],
 };
 spriteSmall = {
-  "4": {16: [31, 1, 6, 6]},
-  "6": {16: [31, 8, 6, 6]},
+  "4": [40, 1, 6, 6],
+  "6": [40, 8, 6, 6],
 };
 
 // Destination coordinates: [x, y]
-targetBig = {
-  16: [0, 1],
-};
-targetSmall1 = {
-  16: [10, 1],
-};
-targetSmall2 = {
-  16: [10, 8],
-};
+targetBig = [1, 2];
+targetSmall1 = [13, 2];
+targetSmall2 = [13, 9];
 
 // Flags are bitwise-OR'd across all connections to a domain.
 FLAG_SSL = 0x1;
@@ -92,7 +86,7 @@ function getSpriteImg(size) {
   var s = spriteElements[size];
   if (!s) {
     s = spriteElements[size] = document.createElement("img");
-    s.src = "sprites" + size + ".png";
+    s.src = "sprites.png";
   }
   return s;
 }
@@ -127,9 +121,8 @@ function buildIcon(pattern, size) {
   return ctx.getImageData(0, 0, size, size);
 }
 
-function drawSprite(ctx, size, targets, sources) {
-  var source = sources[size];
-  var target = targets[size];
+function drawSprite(ctx, size, target, source) {
+
   // (image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
   ctx.drawImage(getSpriteImg(size),
                 source[0], source[1], source[2], source[3],
@@ -350,7 +343,9 @@ TabInfo.prototype.updateIcon = function() {
     "imageData": {
       // Note: It might be possible to avoid redundant operations by reading
       //       window.devicePixelRatio
-      "19": buildIcon(pattern, 16)
+      "16": buildIcon(pattern, 16),
+      "19": buildIcon(pattern, 19),
+      "38": buildIcon(pattern, 38)
     },
   });
   chrome.pageAction.setPopup({
