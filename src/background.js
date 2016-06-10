@@ -48,40 +48,24 @@ tabMap = newMap();
 
 // Images from spritesXX.png: [x, y, w, h]
 spriteBig = {
-  "4": {16: [1, 1, 9, 14],
-        19: [1, 1, 12, 16],
-        38: [2, 2, 24, 32]},
-  "6": {16: [11, 1, 9, 14],
-        19: [14, 1, 12, 16],
-        38: [28, 2, 24, 32]},
-  "?": {16: [21, 1, 9, 14],
-        19: [27, 1, 12, 16],
-        38: [54, 2, 24, 32]},
+  "4": {16: [1, 1, 9, 14]},
+  "6": {16: [11, 1, 9, 14]},
+  "?": {16: [21, 1, 9, 14]},
 };
 spriteSmall = {
-  "4": {16: [31, 1, 6, 6],
-        19: [40, 1, 6, 6],
-        38: [80, 2, 12, 12]},
-  "6": {16: [31, 8, 6, 6],
-        19: [40, 8, 6, 6],
-        38: [80, 16, 12, 12]},
+  "4": {16: [31, 1, 6, 6]},
+  "6": {16: [31, 8, 6, 6]},
 };
 
 // Destination coordinates: [x, y]
 targetBig = {
   16: [0, 1],
-  19: [1, 2],
-  38: [2, 4],
 };
 targetSmall1 = {
   16: [10, 1],
-  19: [13, 2],
-  38: [26, 4],
 };
 targetSmall2 = {
   16: [10, 8],
-  19: [13, 9],
-  38: [26, 18],
 };
 
 // Flags are bitwise-OR'd across all connections to a domain.
@@ -366,9 +350,7 @@ TabInfo.prototype.updateIcon = function() {
     "imageData": {
       // Note: It might be possible to avoid redundant operations by reading
       //       window.devicePixelRatio
-      "16": buildIcon(pattern, 16),
-      "19": buildIcon(pattern, 19),
-      "38": buildIcon(pattern, 38),
+      "19": buildIcon(pattern, 16)
     },
   });
   chrome.pageAction.setPopup({
